@@ -23,10 +23,11 @@ SELECT
 	round(avg(wages.avg_wages) /prices.avg_price) AS units_per_wage
 FROM t_tana_safarikova_project_sql_primary_final wages
 JOIN t_tana_safarikova_project_sql_primary_final prices
-	ON prices.YEAR = wages.YEAR 
+	ON prices.YEAR = wages.YEAR -- JOIN zajistí, že se zobrazí pouze roky, pro které máme data pro roky v mzdách i cenách - není třeba filtrace
 	AND (prices.category = 'Mléko polotučné pasterované' OR prices.category = 'Chléb konzumní kmínový')
 WHERE wages.avg_wages IS NOT NULL
 GROUP BY 
 	wages.YEAR,
-	prices.category 
+	prices.category,
+	prices.avg_price
 	
