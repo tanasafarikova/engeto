@@ -22,6 +22,8 @@ ON prices.YEAR = wages.year
 JOIN t_tana_safarikova_project_sql_secondary_final gdp ON gdp.year = prices.year
 WHERE avg_price IS NOT NULL 
 GROUP BY 
-	prices.YEAR
+	prices.YEAR,
+	wages.pct,
+	gdp.GDP
 
 -- K vetsimu propadu rustu doslo v roce 2009, kde by pokles HDP o 4,7% což se projevilo ve stejném roce i na poklesu cen potravin. Zároveň se snížil růst mezd.
